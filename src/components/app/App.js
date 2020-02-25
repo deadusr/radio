@@ -11,7 +11,7 @@ const App = props => {
     <div className='radio'>
       <Header />
       <RadionSelection />
-      <Audio audioSrc={music}/>
+      <Audio link={music} />
     </div>
   )
 }

@@ -1,25 +1,36 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-const Audio = ({ audioSrc, range = 50 }) => {
+import { audioVisual } from '../../sripts';
+import './audio.css';
 
+const Audio = ({ range = 50, link }) => {
+
+  let onAudioPlay;
+
+  useEffect(() => {
+    onAudioPlay = audioVisual(link)
+  }, [onAudioPlay])
 
   const columns = [];
 
   for (let i = 0; i < range; i++) {
-    columns.push(
-      <span className='visualisator__column'></span>
-    )
+    columns.push(<span key={i} className='visualisator__column'></span>)
   }
 
-  console.log(columns)
-
+  const audioPlay = () => onAudioPlay();
 
   return (
     <div className='audio'>
-      <audio src={audioSrc} />
       <div className='visualisator'>
+        <audio src={link} id='audio' />
         {columns.map(el => el)}
       </div>
+      <section className='controls'>
+        <button onClick={audioPlay} >
+          <i className='square'></i>
+
+        </button>
+      </section>
     </div>
   )
 }
