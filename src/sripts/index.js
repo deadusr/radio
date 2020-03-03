@@ -1,5 +1,10 @@
-import audioVisual from './audio-vusual';
+import visualizeMusic from './visualize-music';
+import setTimerMusic from './set-timer-music';
+import controlMusic from './control-music';
 
 export {
-  audioVisual
-}
+  visualizeMusic,
+  setTimerMusic,
+  controlMusic
+};
+

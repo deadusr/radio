@@ -1,8 +1,8 @@
-export default () => {
+const visualizeMusic = () => {
   let context, analyser;
 
   let columns = document.querySelectorAll(".visualisator__column");
-  let audio = document.getElementById('audio');
+  const audio = document.getElementById('audio');
 
   function preparation() {
     context = new AudioContext();
@@ -13,8 +13,11 @@ export default () => {
     loop();
   }
 
-  audio.addEventListener('timeupdate', () => {
-    console.log(audio.currentTime)
+  audio.addEventListener('play', () => {
+    if (!context) {
+      preparation();
+    }
+    loop();
   })
 
   function loop() {
@@ -29,16 +32,11 @@ export default () => {
     })
   }
 
-  return function () {
+  audio.addEventListener('play', () => {
     if (!context) {
       preparation();
     }
-    if (audio.paused) {
-      audio.play();
-      loop();
-    } else {
-      audio.pause();
-    }
-  }
+  })
 }
 
+export default visualizeMusic;

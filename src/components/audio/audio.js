@@ -1,38 +1,52 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 
-import { audioVisual } from '../../sripts';
+
+import { withServices } from '../hos-helpers';
+import { setCurrentTrack } from '../../actions';
+import AudioVisualisator from '../audio-visualisator';
+import AudioControls from '../audio-controls';
+import AudioTimer from '../audio-timer';
 import './audio.css';
 
-const Audio = ({ range = 50, link }) => {
+const Audio = ({ services, currentTrack, setCurrentTrack }) => {
 
-  let onAudioPlay;
 
-  useEffect(() => {
-    onAudioPlay = audioVisual(link)
-  }, [onAudioPlay])
 
-  const columns = [];
-
-  for (let i = 0; i < range; i++) {
-    columns.push(<span key={i} className='visualisator__column'></span>)
+  const getTrackFromServer = () => {
+    services.getTrack('4rQYDXfKFikLX4ad674jhg')
+      .then((track) => {
+        setCurrentTrack(track);
+      })
   }
 
-  const audioPlay = () => onAudioPlay();
+  services.getTrack()
+
+  useEffect(getTrackFromServer, [])
+
+  const { link, name, artist } = currentTrack;
 
   return (
     <div className='audio'>
-      <div className='visualisator'>
-        <audio src={link} id='audio' />
-        {columns.map(el => el)}
+      <audio src={link} id='audio' controls />
+      <AudioVisualisator range={50} />
+      <div className='audio__info'>
+        <AudioTimer />
+        <span className='audio__title'>{`${artist} - ${name}`}</span>
+        <AudioControls />
       </div>
-      <section className='controls'>
-        <button onClick={audioPlay} >
-          <i className='square'></i>
-
-        </button>
-      </section>
     </div>
   )
 }
 
-export default Audio;
+
+
+const mapStateToProps = (state) => {
+  return {
+    currentTrack: state.currentTrack
+  }
+}
+const mapDispatchToProps = {
+  setCurrentTrack
+}
+export default connect(mapStateToProps, mapDispatchToProps)(withServices(Audio));

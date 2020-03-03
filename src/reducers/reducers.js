@@ -1,32 +1,34 @@
 const initialState = {
   currentTrack: {
-    src: '',
+    link: '',
     currentPosition: 0,
     title: '',
-
+    artist: ''
   }
 }
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case 'SET_CURRENT_TRACK':
-      const { src, title } = action.payload;
+      const { external_urls: { spotify }, name, artists, } = action.payload;
+      const artist = `${artists.map(el => `${el.name} `)}`
       return {
+        ...state,
         currentTrack: {
-          src,
+          link: spotify,
           currentPosition: 0,
-          title,
-        },
-        ...state
+          name,
+          artist
+        }
       }
 
     case 'SET_CURRENT_POSITION':
       return {
+        ...state,
         currentTrack: {
           ...state.currentTrack,
           currentPosition: action.payload
-        },
-        ...state
+        }
       }
     default:
       return state
