@@ -1,11 +1,12 @@
 import React from 'react';
 
+import './radio-selection.css';
 import spriteIcons from './sprite.svg';
 
 const RadioSelection = props => {
   return (
     <div className='radio__selections_wrap'>
-      <button className='radion__selections_array'>&lsaquo;</button>
+      <button className='radion__selections_arrow'>&lsaquo;</button>
       <div className='radio__selections'>
         <button className='radion__selections_item'>
           <i>
@@ -21,7 +22,7 @@ const RadioSelection = props => {
             </svg>
           </i>
         </button>
-        <button className='radion__selections_item'>
+        <button className='radion__selections_item active'>
           <i>
             <svg>
               <use xlinkHref={`${spriteIcons}#rock`}></use>
@@ -43,7 +44,7 @@ const RadioSelection = props => {
           </i>
         </button>
       </div>
-      <button className='radion__selections_array'>&rsaquo;</button>
+      <button className='radion__selections_arrow'>&rsaquo;</button>
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 
@@ -11,32 +11,36 @@ import './audio.css';
 
 const Audio = ({ services, currentTrack, setCurrentTrack }) => {
 
-
-
-  const getTrackFromServer = () => {
-    services.getTrack('4rQYDXfKFikLX4ad674jhg')
-      .then((track) => {
-        setCurrentTrack(track);
-      })
+  const getRadio = () => {
+    services.getRadio()
+      .then(({ currentTrack }) => services.getMusic(currentTrack)
+        .then((track) => setCurrentTrack(track)))
   }
 
-  services.getTrack()
+  const createAudio = () => {
+    const audio = document.createElement('audio');
+    audio.src = link;
+    audio.addEventListener('canplay', () => audio.play())
+    audio.addEventListener('ended', getRadio);
+    return audio;
+  }
 
-  useEffect(getTrackFromServer, [])
+  useEffect(getRadio, [])
 
-  const { link, name, artist } = currentTrack;
+  const { title, artist, link } = currentTrack;
+  const audio = createAudio();
 
   return (
     <div className='audio'>
-      <audio src={link} id='audio' controls />
-      <AudioVisualisator range={50} />
+      <AudioVisualisator audio={audio} range={60} />
       <div className='audio__info'>
-        <AudioTimer />
-        <span className='audio__title'>{`${artist} - ${name}`}</span>
-        <AudioControls />
+        <AudioTimer audio={audio} />
+        <span className='audio__title'>{`${artist} - ${title}`}</span>
+        <AudioControls audio={audio} />
       </div>
     </div>
   )
+
 }
 
 

@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
 
 import { visualizeMusic } from '../../sripts';
+import './audio-visualisator.css';
 
 
-export default ({ range }) => {
+export default ({ range, audio }) => {
 
   useEffect(() => {
-    visualizeMusic()
-  }, [])
+    visualizeMusic(audio)
+  }, [audio])
 
   const columns = [];
   for (let i = 0; i < range; i++) {

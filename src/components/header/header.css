@@ -1,0 +1,15 @@
+.header {
+  text-align: center;
+}
+
+.header h1 {
+  font-size: 1.625rem;
+  font-weight: 300;
+}
+
+.header h4 {
+  color: #C6C6C6;
+  font-weight: normal;
+  font-size: 0.5rem;
+  letter-spacing: 0.265rem;
+}

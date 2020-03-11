@@ -1,14 +1,15 @@
 import React from 'react';
 
 import Header from '../header';
-import RadionSelection from '../radio-selection';
+import RadioSelection from '../radio-selection';
 import Audio from '../audio';
+import './app.css';
 
 const App = props => {
   return (
     <div className='radio'>
       <Header />
-      <RadionSelection />
+      <RadioSelection />
       <Audio />
     </div>
   )

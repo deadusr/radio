@@ -1,8 +1,7 @@
-const visualizeMusic = () => {
+const visualizeMusic = (audio) => {
   let context, analyser;
 
   let columns = document.querySelectorAll(".visualisator__column");
-  const audio = document.getElementById('audio');
 
   function preparation() {
     context = new AudioContext();
@@ -21,15 +20,26 @@ const visualizeMusic = () => {
   })
 
   function loop() {
+    makePauseAnimation(audio.paused);
     if (!audio.paused) {
       window.requestAnimationFrame(loop);
     }
     let array = new Uint8Array(analyser.frequencyBinCount);
     analyser.getByteFrequencyData(array);
 
+    const getHeight = (index) => {
+      let height = array[Math.floor(array.length / index ? index : 1)];
+      height = height / 256 * 80;
+      return height;
+    }
+
     columns.forEach((el, index) => {
-      el.style.height = (array[Math.floor(array.length / index ? index : 1)]) + "px";
+      el.style.height = getHeight(index) + "%";
     })
+  }
+
+  function makePauseAnimation(paused) {
+    paused ? columns.forEach(el => el.classList.add('pause')) : columns.forEach(el => el.classList.remove('pause'))
   }
 
   audio.addEventListener('play', () => {

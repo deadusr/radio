@@ -5,6 +5,6 @@ import controlMusic from './control-music';
 export {
   visualizeMusic,
   setTimerMusic,
-  controlMusic
+  controlMusic,
 };
 

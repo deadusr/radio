@@ -1,0 +1,58 @@
+{
+  "musicList": [
+    {
+      "id": "1",
+      "href": "./assets/music/joan-osborne-one-of-us.mp3",
+      "artist": "Joan Osborne",
+      "title": "One of us"
+    },
+    {
+      "id": "2",
+      "href": "./assets/music/Mother_Mother_-_Get_Up.mp3",
+      "artist": "Mother Mother",
+      "title": "Get Up"
+    },
+    {
+      "id": "3",
+      "href": "./assets/music/Denzel_Curry-SPEEDBOAT.mp3",
+      "artist": "Denzel curry",
+      "title": "SPEEDBOAT"
+    },
+    {
+      "id": "4",
+      "href": "./assets/music/train-shake-up-christmas.mp3",
+      "artist": "Train",
+      "title": "Shake Up Christmas"
+    },
+    {
+      "id": "5",
+      "href": "./assets/music/One_Direction-One_Way_or_Another_Teenage_Kicks.mp3",
+      "artist": "One Direction",
+      "title": "One Way or Another (Teenage Kicks)"
+    },
+    {
+      "id": "6",
+      "href": "./assets/music/Soulja_Boy_Tellem-Crank_That_Soulja_Boy.mp3",
+      "artist": "Soulja Boy",
+      "title": "Crank That (Soulja Boy) UK Radio Edit"
+    },
+    {
+      "id": "7",
+      "href": "./assets/music/One_Direction-Kiss_You.mp3",
+      "artist": "One Direction",
+      "title": "Kiss You"
+    },
+    {
+      "id": "8",
+      "href": "./assets/music/Elvis_Presley_-_Jailhouse_Rock.mp3",
+      "artist": "Elvis Presley",
+      "title": "Jailhouse Rock Remastered Original Version"
+    },
+    {
+      "id": "9",
+      "href": "./assets/music/Marshmello_-_Moving On.mp3",
+      "artist": "Marshmello",
+      "title": "Moving On"
+    }
+  ]
+}

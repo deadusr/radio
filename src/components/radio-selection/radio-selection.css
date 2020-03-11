@@ -1,0 +1,52 @@
+.radio__selections_wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.radio__selections {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+}
+
+.radion__selections_item {
+  width: 2.31rem;
+  height: 2.31rem;
+}
+
+.radion__selections_item svg {
+  height: 100%;
+  fill: #B9B9BA;
+}
+
+.radion__selections_item.active svg {
+  fill: #4D4D4D;
+}
+
+.radion__selections_arrow {
+  flex-grow: 0;
+  flex-shrink: 0;
+  text-align: center;
+  font-size: 1.215rem;
+  background:#EDEEF3;
+  width: 2.31rem;
+  height: 2.31rem;
+  line-height: 2.31rem;
+  border-radius: 50%;
+}
+
+@media screen and (max-width:768px) {
+  .radio__selections_wrap  {
+    width: 95%;
+  }
+}
+
+@media screen and (max-width:480px) {
+  .radio__selections {
+    width: 70%;
+  }
+}

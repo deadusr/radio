@@ -1,0 +1,22 @@
+.audio__timer_stroke {
+  margin: 0 auto;
+  width: 90%;
+  height: 3px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+#audio__status-bar {
+  transition: all 0.3s ease;
+  height: 3px;
+  width: 0;
+  background: #E597D9;
+  display: block;
+}
+
+.audio__timer {
+  font-size: 0.5rem;
+  font-weight: bold;
+}

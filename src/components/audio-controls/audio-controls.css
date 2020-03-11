@@ -1,0 +1,49 @@
+.audio__control {
+  width: 1rem;
+  height: 1rem;
+}
+
+.audio__control.btn__play {
+  overflow: hidden;
+}
+
+.audio__control.btn__play::before {
+  content: '';
+  width: inherit;
+  height: inherit;
+  display: block;
+  background: #D1D3DF;
+  transition: all 0.3s ease;
+}
+
+.audio__control.btn__play.play::before {
+  transform: rotateZ(45deg) translateX(-50%) translateY(50%);
+}
+
+.audio__control.btn__mute {
+  position: relative;
+  overflow: hidden;
+}
+
+.audio__control.btn__mute::before {
+  transition: all 1s ease;
+  opacity: 0;
+}
+
+
+
+.audio__control.btn__mute.mute::before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 2px;
+  height: 150%;
+  right: 0;
+  top: 0;
+  font-weight: bold;
+  background: #D1D3DF;
+  transform: rotate(45deg);
+  transform-origin: 50% 0;
+  z-index: 1;
+  opacity: 1;
+}
