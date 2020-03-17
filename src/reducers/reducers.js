@@ -3,7 +3,10 @@ const initialState = {
     link: '',
     title: '',
     artist: ''
-  }
+  },
+  isPlaying: false,
+  isMute: false,
+  devise: '',
 }
 
 const reducer = (state = initialState, action) => {
@@ -19,6 +22,25 @@ const reducer = (state = initialState, action) => {
           artist
         }
       }
+
+    case 'SET_IS_PLAYING':
+      return {
+        ...state,
+        isPlaying: action.payload
+      }
+
+    case 'SET_IS_MUTE':
+      return {
+        ...state,
+        isMute: action.payload
+      }
+
+    case 'SET_DEVISE':
+      return {
+        ...state,
+        devise: action.payload
+      }
+
 
     default:
       return state

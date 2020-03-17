@@ -18,6 +18,8 @@
 
 .audio__title {
   order: 3;
+  font-size: 0.625rem;
+  text-align: center;
 }
 
 .audio__timer.duration {
@@ -26,8 +28,4 @@
 
 .audio__control.btn__mute {
   order: 5;
-}
-
-.audio__title {
-  font-size: 0.625rem;
 }

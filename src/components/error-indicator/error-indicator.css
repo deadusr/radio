@@ -1,0 +1,12 @@
+.error-indicator {
+  text-align: center;
+}
+
+.error-indicator__text {
+  color: #F97878;
+  margin-bottom: 1.5rem; 
+}
+
+.error-indicator__icon {
+  width: 3rem; 
+}

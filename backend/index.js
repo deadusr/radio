@@ -4,13 +4,15 @@ const musicApi = require('./routes/music-api');
 
 const app = express();
 
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT;
 
 app.use(express.static(path.join(__dirname, '../build')))
 
 app.use('/api', musicApi)
 
 app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Headers', 'origin, content-type, accept');
   res.sendFile(path.join(__dirname, '../build/index.html'))
 })
 

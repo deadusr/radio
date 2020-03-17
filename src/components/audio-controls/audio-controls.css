@@ -16,6 +16,10 @@
   transition: all 0.3s ease;
 }
 
+.audio__control.btn__play.load::before {
+  background: #E1E3F0;
+}
+
 .audio__control.btn__play.play::before {
   transform: rotateZ(45deg) translateX(-50%) translateY(50%);
 }
@@ -46,4 +50,11 @@
   transform-origin: 50% 0;
   z-index: 1;
   opacity: 1;
+}
+
+@media screen and (max-width:430px) {
+  .audio__control {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
 }

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 
@@ -7,47 +7,77 @@ import { setCurrentTrack } from '../../actions';
 import AudioVisualisator from '../audio-visualisator';
 import AudioControls from '../audio-controls';
 import AudioTimer from '../audio-timer';
+import LoadingIndicator from '../loading-indicator';
+import ErrorIndicator from '../error-indicator';
 import './audio.css';
+import ErrorBoundry from '../error-boundry';
 
-const Audio = ({ services, currentTrack, setCurrentTrack }) => {
+const Audio = ({ services, currentTrack, setCurrentTrack, devise }) => {
+  const [audio, setAudio] = useState();
+  const [isError, setError] = useState(false);
+  const [isLoading, setLoading] = useState(true);
+
+  const { title, artist, link } = currentTrack;
 
   const getRadio = () => {
     services.getRadio()
-      .then(({ currentTrack }) => services.getMusic(currentTrack)
-        .then((track) => setCurrentTrack(track)))
+      .then(({ currentTrack }) => getTrack(currentTrack))
+      .catch(onError)
+  }
+
+  const getTrack = id => {
+    services.getMusic(id)
+      .then((track) => {
+        setCurrentTrack(track)
+        setLoading(false)
+      })
+      .catch(onError)
   }
 
   const createAudio = () => {
     const audio = document.createElement('audio');
     audio.src = link;
-    audio.addEventListener('canplay', () => audio.play())
     audio.addEventListener('ended', getRadio);
     return audio;
   }
 
-  useEffect(getRadio, [])
+  const onError = (err) => {
+    console.error(err);
+    setError(true);
+    setLoading(false)
+  }
 
-  const { title, artist, link } = currentTrack;
-  const audio = createAudio();
+  useEffect(() => {
+    getRadio();
+  }, [])
 
-  return (
+  useEffect(() => {
+    setAudio(createAudio)
+  }, [currentTrack])
+
+
+  if (isLoading) return <LoadingIndicator />
+  if (isError) return <ErrorIndicator />
+
+  const renderAudio =
     <div className='audio'>
-      <AudioVisualisator audio={audio} range={60} />
+      <AudioVisualisator audio={audio} range={devise === 'mobile' ? 30 : 60} />
       <div className='audio__info'>
         <AudioTimer audio={audio} />
         <span className='audio__title'>{`${artist} - ${title}`}</span>
         <AudioControls audio={audio} />
       </div>
-    </div>
-  )
+    </div>;
 
+  return (renderAudio)
 }
 
 
 
 const mapStateToProps = (state) => {
   return {
-    currentTrack: state.currentTrack
+    currentTrack: state.currentTrack,
+    devise: state.devise
   }
 }
 const mapDispatchToProps = {

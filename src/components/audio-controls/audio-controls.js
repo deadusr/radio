@@ -1,40 +1,38 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 
-import { controlMusic } from '../../sripts';
+import { setIsPlaying, setIsMute } from '../../actions';
 import icon from './volume.svg';
 import './audio-controls.css';
 
-export default ({audio}) => {
+const AudioControls = ({ setIsPlaying, isPlaying, setIsMute, isMute, audio }) => {
 
-  const [state, setState] = useState({
-    play: false,
-    mute: false
-  });
+  const [isLoading, setIsLoading] = useState(true);
 
   const onPlayMusic = () => {
-    setState({
-      ...state,
-      play: !state.play
-    })
-    controlMusic('play', audio);
+    setIsPlaying(!isPlaying)
   }
 
   const onMuteMusic = () => {
-    setState({
-      ...state,
-      mute: !state.mute
-    })
-    controlMusic('mute', audio)
+    setIsMute(!isMute)
+  }
+
+  audio.addEventListener('canplay', () => setIsLoading(false))
+  audio.addEventListener('ended', () => setIsLoading(true))
+
+  if (audio && audio.src && !audio.ended) {
+    isPlaying ? audio.play() : audio.pause();
+    isMute ? audio.volume = 0 : audio.volume = 1;
   }
 
   return (
     <React.Fragment>
       <button
-        className={`audio__control btn__play ${state.play && 'play'}`}
+        className={`audio__control btn__play ${isPlaying && 'play'} ${isLoading && 'load'}`}
         onClick={onPlayMusic}>
       </button>
       <button
-        className={`audio__control btn__mute ${state.mute && 'mute'}`}
+        className={`audio__control btn__mute ${isMute && 'mute'}`}
         onClick={onMuteMusic}
       >
         <img src={icon} alt='icon' />
@@ -42,3 +40,15 @@ export default ({audio}) => {
     </React.Fragment>
   )
 }
+
+const mapStateToProps = state => ({
+  isPlaying: state.isPlaying,
+  isMute: state.isMute
+})
+
+const mapDispatchToProps = {
+  setIsPlaying,
+  setIsMute
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AudioControls);

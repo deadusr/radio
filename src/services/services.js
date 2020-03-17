@@ -1,6 +1,6 @@
 export default class MusicServices {
 
-  __apiBase = 'http://localhost:8000/api';
+  __apiBase = 'https://radio-appp.herokuapp.com/api';
 
   getRadio = async () => {
     return await this.__getData('/radio');
@@ -11,7 +11,10 @@ export default class MusicServices {
   }
 
   __getData = path => {
-    return fetch(`${this.__apiBase}${path}`)
+    return fetch(`${this.__apiBase}${path}`,{
+      method : 'GET',
+      mode: 'cors'
+    })
       .then((res) => res.json()
       .then(data => data))
       .catch(err => console.log(err))

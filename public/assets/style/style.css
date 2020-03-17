@@ -38,9 +38,3 @@ button {
     font-size: 14px;
   }
 }
-
-@media screen and (max-width:430px) {
-  html {
-    font-size: 12px;
-  }
-}
