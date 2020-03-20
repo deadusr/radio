@@ -1,45 +1,47 @@
 const fs = require('fs');
 const path = require('path');
 const data = JSON.parse(fs.readFileSync(path.join(__dirname, './music-list.json'), 'utf-8'));
-const state = {
-  currentTrack: 1,
-  nextTrack: 3,
-  trackList: shuffleArr(data.musicList.map(el=> el.id))
-};
+// const state = {
+//   currentTrack: 1,
+//   nextTrack: 3,
+//   trackList: shuffleArr(data.musicList.map(el => el.id))
+// };
 
-let newState = getNewState();
+let newState;
+let newGenre;
 
-const getRadio = () => {
-  const oldState = newState;
-  newState = getNewState(newState)
-  return oldState;
-}
+const getRadio = (genre) => {
+  const trackList = shuffleArr(data.musicList.filter(el => el.genre === genre).map(el => el.id));
+  const state = {
+    trackList,
+    currentTrack: '',
+    nextTrack: ''
+  }
+  
+  newState = genre === newGenre ? getNewState(newState) : getNewState();
+  newGenre = genre;
+  return newState;
 
 
-function getNewState({ trackList } = state) {
-  const newNextTrack = trackList[1];
-  let newTrackList = trackList.length === 2 ?
-    generateNewTrackList(trackList) :
-    [...trackList.slice(1)]
+  function getNewState({ trackList } = state) {
+    const newNextTrack = trackList[1];
+    let newTrackList = trackList.length === 2 ?
+      generateNewTrackList(trackList) :
+      [...trackList.slice(1)]
 
-  return {
-    currentTrack: trackList[0],
-    nextTrack: newNextTrack,
-    trackList: newTrackList
+    return {
+      currentTrack: trackList[0],
+      nextTrack: newNextTrack,
+      trackList: newTrackList
+    }
+  }
+
+  function generateNewTrackList() {
+    return shuffleArr(state.trackList)
   }
 }
 
-function generateNewTrackList() {
-  return shuffleArr(state.trackList)
-}
 
-function makeArr(length) {
-  const arr = [];
-  for (let i = 1; i < length + 1; i++) {
-    arr.push(i);
-  }
-  return arr;
-}
 
 function shuffleArr(arr) {
   let j, temp;

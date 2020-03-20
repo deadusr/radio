@@ -4,55 +4,106 @@
       "id": "1",
       "href": "./assets/music/joan-osborne-one-of-us.mp3",
       "artist": "Joan Osborne",
-      "title": "One of us"
+      "title": "One of us",
+      "genre": "rock"
     },
     {
       "id": "2",
       "href": "./assets/music/Mother_Mother_-_Get_Up.mp3",
       "artist": "Mother Mother",
-      "title": "Get Up"
+      "title": "Get Up",
+      "genre": "rock"
     },
     {
       "id": "3",
       "href": "./assets/music/Denzel_Curry-SPEEDBOAT.mp3",
       "artist": "Denzel curry",
-      "title": "SPEEDBOAT"
+      "title": "SPEEDBOAT",
+      "genre": "hip-hop"
     },
     {
       "id": "4",
       "href": "./assets/music/train-shake-up-christmas.mp3",
       "artist": "Train",
-      "title": "Shake Up Christmas"
+      "title": "Shake Up Christmas",
+      "genre": "edm"
     },
     {
       "id": "5",
       "href": "./assets/music/One_Direction-One_Way_or_Another_Teenage_Kicks.mp3",
       "artist": "One Direction",
-      "title": "One Way or Another (Teenage Kicks)"
+      "title": "One Way or Another (Teenage Kicks)",
+      "genre": "rock"
     },
     {
       "id": "6",
       "href": "./assets/music/Soulja_Boy_Tellem-Crank_That_Soulja_Boy.mp3",
       "artist": "Soulja Boy",
-      "title": "Crank That (Soulja Boy) UK Radio Edit"
+      "title": "Crank That (Soulja Boy) UK Radio Edit",
+      "genre": "hip-hop"
     },
     {
       "id": "7",
       "href": "./assets/music/One_Direction-Kiss_You.mp3",
       "artist": "One Direction",
-      "title": "Kiss You"
+      "title": "Kiss You",
+      "genre": "rock"
     },
     {
       "id": "8",
       "href": "./assets/music/Elvis_Presley_-_Jailhouse_Rock.mp3",
       "artist": "Elvis Presley",
-      "title": "Jailhouse Rock Remastered Original Version"
+      "title": "Jailhouse Rock Remastered Original Version",
+      "genre": "rock"
     },
     {
       "id": "9",
       "href": "./assets/music/Marshmello_-_Moving On.mp3",
       "artist": "Marshmello",
-      "title": "Moving On"
+      "title": "Moving On",
+      "genre": "edm"
+    },
+    {
+      "id": "10",
+      "href": "./assets/music/Redbone_-_Come_and_Get_Your_Love.mp3",
+      "artist": "Redbone",
+      "title": "Come and Get Your Love",
+      "genre": "rock"
+    },
+    {
+      "id": "11",
+      "href": "./assets/music/The_Wind_And_The_Wave_-_Chandelier_.mp3",
+      "artist": "Chandelier",
+      "title": "The Wind And The Wave",
+      "genre": "acoustic"
+    },
+    {
+      "id": "12",
+      "href": "./assets/music/Skylar_Grey_-_Love_The_Way_You_Lie.mp3",
+      "artist": "Skylar Grey",
+      "title": "Love The Way You Lie",
+      "genre": "acoustic"
+    },
+    {
+      "id": "13",
+      "href": "./assets/music/Skylar_Grey_-_Love_The_Way_You_Lie.mp3",
+      "artist": "Skylar Grey",
+      "title": "Love The Way You Lie",
+      "genre": "acoustic"
+    },
+    {
+      "id": "14",
+      "href": "./assets/music/Alfred_Brendel_Martin_Sieghart_Alfred_Brendel_Orchestra_Lyudvig_van_Betkhoven_-_Bagatelle_for_Piano_in_A_Minor_Fr_Elise_WoO_59.mp3",
+      "artist": "Lyudvig_van_Betkhoven",
+      "title": "Bagatelle for Piano in A Minor 'Für Elise', WoO 59",
+      "genre": "classic"
+    },
+    {
+      "id": "15",
+      "href": "./assets/music/Andr_Previn_-_Tchaikovsky_Swan_Lake_Op_20_Act_2_No_14_Scene_Moderato.mp3",
+      "artist": "Pyotr Ilyich Tchaikovsky",
+      "title": "Swan Lake, Op. 20, Act 2: No. 14, Scene (Moderato)",
+      "genre": "classic"
     }
   ]
 }

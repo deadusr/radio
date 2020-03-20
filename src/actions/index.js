@@ -18,9 +18,15 @@ const setDevise = devise => ({
   payload: devise
 })
 
+const setGenre = genre => ({
+  type: 'SET_GENRE',
+  payload: genre
+})
+
 export {
   setCurrentTrack,
   setIsPlaying,
   setIsMute,
-  setDevise
+  setDevise,
+  setGenre
 }

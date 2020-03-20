@@ -4,6 +4,7 @@ const initialState = {
     title: '',
     artist: ''
   },
+  genre: 'rock',
   isPlaying: false,
   isMute: false,
   devise: '',
@@ -39,6 +40,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         devise: action.payload
+      }
+
+    case 'SET_GENRE':
+      return {
+        ...state,
+        genre: action.payload
       }
 
 
