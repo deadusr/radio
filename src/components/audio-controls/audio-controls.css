@@ -12,12 +12,12 @@
   width: inherit;
   height: inherit;
   display: block;
-  background: #D1D3DF;
+  background: #A8A9B3;
   transition: all 0.3s ease;
 }
 
-.audio__control.btn__play.load::before {
-  background: #E1E3F0;
+.audio__control.btn__play:disabled::before {
+  background: #D1D3DF;
 }
 
 .audio__control.btn__play.play::before {
@@ -45,7 +45,7 @@
   right: 0;
   top: 0;
   font-weight: bold;
-  background: #D1D3DF;
+  background: #A8A9B3;
   transform: rotate(45deg);
   transform-origin: 50% 0;
   z-index: 1;

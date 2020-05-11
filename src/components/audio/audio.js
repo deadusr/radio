@@ -12,7 +12,7 @@ import ErrorIndicator from '../error-indicator';
 import './audio.css';
 import ErrorBoundry from '../error-boundry';
 
-const Audio = ({ services, currentTrack, setCurrentTrack, devise }) => {
+const Audio = ({ services, currentTrack, setCurrentTrack, devise, genre }) => {
   const [audio, setAudio] = useState();
   const [isError, setError] = useState(false);
   const [isLoading, setLoading] = useState(true);
@@ -20,7 +20,7 @@ const Audio = ({ services, currentTrack, setCurrentTrack, devise }) => {
   const { title, artist, link } = currentTrack;
 
   const getRadio = () => {
-    services.getRadio()
+    services.getRadio(genre)
       .then(({ currentTrack }) => getTrack(currentTrack))
       .catch(onError)
   }
@@ -48,8 +48,9 @@ const Audio = ({ services, currentTrack, setCurrentTrack, devise }) => {
   }
 
   useEffect(() => {
+    if(audio && audio.src) audio.pause();
     getRadio();
-  }, [])
+  }, [genre])
 
   useEffect(() => {
     setAudio(createAudio)
@@ -77,7 +78,8 @@ const Audio = ({ services, currentTrack, setCurrentTrack, devise }) => {
 const mapStateToProps = (state) => {
   return {
     currentTrack: state.currentTrack,
-    devise: state.devise
+    devise: state.devise,
+    genre: state.genre
   }
 }
 const mapDispatchToProps = {

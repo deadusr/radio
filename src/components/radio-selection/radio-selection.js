@@ -1,45 +1,44 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import { setGenre } from '../../actions';
+import RadioSelectionIcon from '../radio-selection-icon';
 import './radio-selection.css';
-import spriteIcons from './sprite.svg';
 
-const RadioSelection = ({ currentGenre, setGenre }) => {
 
-  const renderButtom = genre => {
-    return (
-      <button className={`radion__selections_item ${currentGenre === genre && 'active'}`}>
-        <i>
-          <svg>
-            <use xlinkHref={`${spriteIcons}#${genre}`}></use>
-          </svg>
-        </i>
-      </button>
-    )
+const RadioSelection = ({ setGenre }) => {
+  const genreList = ['edm', 'hip-hop', 'rock', 'acoustic', 'classic'];
+  const [activeGenre, setActiveGenre] = useState(2);
+
+  useEffect(() => {
+    setGenre(genreList[activeGenre])
+  }, [activeGenre])
+
+
+  const onChangeGenre = char => {
+    char === '+' ? increateGenre() : decreaseGenre();
+  }
+
+  const increateGenre = () => {
+    setActiveGenre(activeGenre >= genreList.length - 1 ? 0 : activeGenre + 1)
+  }
+  const decreaseGenre = () => {
+    setActiveGenre(activeGenre === 0 ? genreList.length - 1 : activeGenre - 1)
   }
 
   return (
     <div className='radio__selections_wrap'>
-      <button className='radion__selections_arrow'>&lsaquo;</button>
+      <button onClick={() => onChangeGenre('-')} className='radion__selections_arrow'>&lsaquo;</button>
       <div className='radio__selections'>
-        {renderButtom('edm')}
-        {renderButtom('hip-hop')}
-        {renderButtom('rock')}
-        {renderButtom('acoustic')}
-        {renderButtom('classic')}
+        {genreList.map((genre, idx) => <RadioSelectionIcon key={idx} genre={genre} />)}
       </div>
-      <button className='radion__selections_arrow'>&rsaquo;</button>
+      <button onClick={() => onChangeGenre('+')} className='radion__selections_arrow'>&rsaquo;</button>
     </div>
   )
 }
-
-const mapStateToProps = state => ({
-  currentGenre: state.genre
-})
 
 const mapDispatchToProps = {
   setGenre
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(RadioSelection);
+export default connect(null,mapDispatchToProps)(RadioSelection);

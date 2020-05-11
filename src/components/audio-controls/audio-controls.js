@@ -28,7 +28,8 @@ const AudioControls = ({ setIsPlaying, isPlaying, setIsMute, isMute, audio }) =>
   return (
     <React.Fragment>
       <button
-        className={`audio__control btn__play ${isPlaying && 'play'} ${isLoading && 'load'}`}
+        className={`audio__control btn__play ${isPlaying && 'play'}`}
+        disabled={isLoading}
         onClick={onPlayMusic}>
       </button>
       <button

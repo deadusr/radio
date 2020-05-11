@@ -4,9 +4,10 @@ const musicApi = require('./routes/music-api');
 
 const app = express();
 
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT;
 
-app.use(express.static(path.join(__dirname, '../build')))
+app.use(express.static(path.join(__dirname, '/assets')));
+app.use(express.static(path.join(__dirname, '/build')));
 
 app.use('/api', musicApi)
 
